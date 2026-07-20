@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GALLERY | 宇宙世紀ノート</title>
+<meta name="description" content="『機動戦士ガンダム』模写イラストギャラリー。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#05080d;
+    --panel:#0b1420;
+    --panel-2:#0f1b2c;
+    --fed-blue:#173a72;
+    --fed-blue-light:#4d7fd4;
+    --armor-white:#e9edf3;
+    --armor-white-dim:#aab6c7;
+    --zeon-red:#c81f2c;
+    --zeon-red-dim:#7a1219;
+    line-height:1.7;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--void);
+    color:var(--armor-white);
+    font-family:'Noto Sans JP', sans-serif;
+    font-weight:400;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--zeon-red); color:var(--armor-white);}
+  :focus-visible{ outline:2px solid var(--zeon-red); outline-offset:3px; }
+  button{ font-family:inherit; }
+
+  h1,h2,h3{
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-weight:900;
+    letter-spacing:.02em;
+  }
+
+  .mono{ font-family:'JetBrains Mono', monospace; }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.28em;
+    color:var(--fed-blue-light);
+    text-transform:uppercase;
+  }
+  .eyebrow.red{ color:var(--zeon-red); }
+
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none; z-index:0;
+    background-image:
+      linear-gradient(rgba(77,127,212,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(77,127,212,0.05) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
+  }
+
+  .frame{ position:relative; }
+  .cnr{ position:absolute; width:16px; height:16px; border:2px solid var(--fed-blue-light); opacity:.9; pointer-events:none; }
+  .cnr.tl{ top:-1px; left:-1px; border-width:2px 0 0 2px; }
+  .cnr.tr{ top:-1px; right:-1px; border-width:2px 2px 0 0; }
+  .cnr.bl{ bottom:-1px; left:-1px; border-width:0 0 2px 2px; }
+  .cnr.br{ bottom:-1px; right:-1px; border-width:0 2px 2px 0; }
+  .frame.red .cnr{ border-color:var(--zeon-red); }
+
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(5,8,13,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(77,127,212,0.25);
+  }
+  .nav-inner{
+    max-width:1120px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-weight:700; font-size:1.05rem;
+    letter-spacing:.05em;
+  }
+  .brand .dot{
+    width:9px; height:9px;
+    background:var(--zeon-red);
+    display:inline-block;
+    animation:blink 2.4s ease-in-out infinite;
+    flex-shrink:0;
+  }
+  @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.25;} }
+
+  nav.links{ display:flex; gap:28px; }
+  nav.links a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    color:var(--armor-white-dim);
+    padding:6px 2px;
+    border-bottom:1px solid transparent;
+    transition:color .2s, border-color .2s;
+  }
+  nav.links a:hover, nav.links a:focus-visible{ color:var(--armor-white); border-color:var(--zeon-red); }
+  nav.links a.current{ color:var(--armor-white); border-color:var(--fed-blue-light); }
+
+  .page-head{
+    max-width:1120px; margin:0 auto;
+    padding:72px 24px 40px;
+    position:relative; z-index:1;
+  }
+  .page-head h1{ font-size:clamp(2rem, 4vw, 2.6rem); margin-top:14px; }
+  .page-head p.lead{
+    margin-top:14px;
+    color:var(--armor-white-dim);
+    max-width:56ch;
+    font-size:.95rem;
+  }
+
+  .section{
+    max-width:1120px; margin:0 auto;
+    padding:0 24px 96px;
+    position:relative; z-index:1;
+  }
+
+  /* ---------- gallery grid ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+    gap:18px;
+  }
+  .thumb{
+    position:relative;
+    aspect-ratio:1/1;
+    background:var(--panel);
+    border:1px solid rgba(77,127,212,0.2);
+    cursor:pointer;
+    overflow:hidden;
+    padding:0;
+    display:block;
+    text-align:left;
+    color:inherit;
+    transition:border-color .25s;
+  }
+  .thumb:hover, .thumb:focus-visible{ border-color:var(--zeon-red); }
+  .thumb img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+    filter:saturate(.92) contrast(1.02);
+    transition:transform .4s ease;
+  }
+  .thumb:hover img, .thumb:focus-visible img{ transform:scale(1.05); }
+  .thumb .cnr{ z-index:2; }
+  .thumb .cap{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:10px 12px;
+    background:linear-gradient(0deg, rgba(5,8,13,0.92), transparent);
+    transform:translateY(4px);
+    opacity:0;
+    transition:opacity .2s, transform .2s;
+  }
+  .thumb:hover .cap, .thumb:focus-visible .cap{ opacity:1; transform:translateY(0); }
+  .thumb .cap p.mono{ font-size:.65rem; color:var(--fed-blue-light); letter-spacing:.1em; }
+  .thumb .cap h3{ font-size:.85rem; margin-top:2px; color:var(--armor-white); }
+
+  /* ---------- lightbox ---------- */
+  .lightbox{
+    position:fixed; inset:0; z-index:100;
+    background:rgba(5,8,13,0.94);
+    backdrop-filter:blur(4px);
+    display:none;
+    align-items:center; justify-content:center;
+    padding:60px 24px;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox-inner{
+    position:relative;
+    max-width:min(880px, 92vw);
+    width:100%;
+    background:var(--panel);
+    border:1px solid rgba(77,127,212,0.3);
+    padding:20px;
+  }
+  .lightbox-inner .cnr{ width:20px; height:20px; }
+  .lightbox-img-wrap{
+    width:100%;
+    max-height:64vh;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--void);
+    overflow:hidden;
+  }
+  .lightbox-img-wrap img{
+    max-width:100%; max-height:64vh;
+    display:block;
+    object-fit:contain;
+  }
+  .lightbox-cap{
+    margin-top:16px;
+    display:flex; justify-content:space-between; align-items:flex-end; gap:20px;
+    flex-wrap:wrap;
+  }
+  .lightbox-cap p.mono{ font-size:.7rem; color:var(--fed-blue-light); letter-spacing:.12em; }
+  .lightbox-cap h3{ font-size:1.1rem; margin-top:6px; color:var(--armor-white); }
+  .lightbox-cap p.desc{ margin-top:6px; font-size:.85rem; color:var(--armor-white-dim); max-width:56ch; }
+  .lightbox-index{ font-family:'JetBrains Mono', monospace; font-size:.75rem; color:var(--armor-white-dim); white-space:nowrap; }
+
+  .lb-btn{
+    position:absolute;
+    background:var(--panel);
+    border:1px solid rgba(77,127,212,0.35);
+    color:var(--armor-white);
+    width:38px; height:38px;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    font-family:'JetBrains Mono', monospace;
+    font-size:1rem;
+    transition:border-color .2s, color .2s;
+  }
+  .lb-btn:hover, .lb-btn:focus-visible{ border-color:var(--zeon-red); color:var(--zeon-red); }
+  .lb-close{ top:-16px; right:-16px; }
+  .lb-prev{ left:-16px; top:50%; transform:translateY(-50%); }
+  .lb-next{ right:-16px; top:50%; transform:translateY(-50%); }
+
+  @media (max-width:640px){
+    .lb-prev, .lb-next{ display:none; }
+    .lightbox{ padding:32px 16px; }
+    .lightbox-inner{ padding:14px; }
+  }
+
+  footer{
+    border-top:1px solid rgba(77,127,212,0.2);
+    background:var(--panel);
+  }
+  .footer-inner{
+    max-width:1120px; margin:0 auto;
+    padding:64px 24px 40px;
+  }
+  .contact h2{ font-size:1.3rem; }
+  .contact p{ color:var(--armor-white-dim); margin-top:8px; font-size:.9rem; }
+  form.contact-form{
+    margin-top:24px;
+    display:grid;
+    gap:14px;
+    max-width:480px;
+  }
+  form.contact-form label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.7rem;
+    letter-spacing:.12em;
+    color:var(--fed-blue-light);
+    display:block;
+    margin-bottom:6px;
+  }
+  form.contact-form input,
+  form.contact-form textarea{
+    width:100%;
+    background:var(--void);
+    border:1px solid rgba(77,127,212,0.3);
+    color:var(--armor-white);
+    padding:11px 12px;
+    font-family:'Noto Sans JP', sans-serif;
+    font-size:.9rem;
+  }
+  form.contact-form textarea{ min-height:110px; resize:vertical; }
+  form.contact-form button{
+    justify-self:start;
+    margin-top:6px;
+    background:var(--zeon-red);
+    color:var(--armor-white);
+    border:none;
+    padding:12px 30px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    cursor:pointer;
+    transition:background .2s;
+  }
+  form.contact-form button:hover{ background:#9e1a24; }
+
+  .footer-meta{
+    margin-top:56px;
+    padding-top:28px;
+    border-top:1px solid rgba(77,127,212,0.14);
+    display:flex; flex-wrap:wrap;
+    gap:24px 40px;
+    justify-content:space-between;
+  }
+  .footer-meta .block{ max-width:420px; }
+  .footer-meta h4{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.68rem;
+    letter-spacing:.16em;
+    color:var(--fed-blue-light);
+    margin-bottom:10px;
+  }
+  .footer-meta p{ font-size:.78rem; color:var(--armor-white-dim); }
+  .footer-meta a.hub{
+    display:inline-block; margin-top:10px;
+    font-size:.78rem;
+    color:var(--armor-white-dim);
+    border-bottom:1px solid rgba(170,182,199,0.4);
+  }
+  .footer-meta a.hub:hover{ color:var(--armor-white); border-color:var(--zeon-red); }
+
+  .copyright{
+    margin-top:40px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.68rem;
+    color:#5a6779;
+    letter-spacing:.04em;
+  }
+
+  @media (max-width:520px){
+    .nav-inner{ padding:14px 18px; }
+    nav.links{ font-size:.68rem; gap:12px; }
+    .page-head{ padding:56px 18px 32px; }
+    .section{ padding:0 18px 72px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand"><span class="dot"></span>宇宙世紀ノート</div>
+    <nav class="links">
+      <a href="index.html">HOME</a>
+      <a href="blog.html">BLOG</a>
+      <a href="gallery.html" class="current">GALLERY</a>
+      <a href="about.html">ABOUT</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-head">
+  <p class="eyebrow">VISUAL</p>
+  <h1>GALLERY</h1>
+  <p class="lead">模写したイラストや落書きをまとめています。画像をクリックすると拡大表示されます。</p>
+</div>
+
+<section class="section">
+  <div class="grid" id="gallery-grid"></div>
+</section>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="拡大表示">
+  <div class="lightbox-inner frame">
+    <span class="cnr tl"></span><span class="cnr tr"></span><span class="cnr bl"></span><span class="cnr br"></span>
+    <button class="lb-btn lb-close" id="lb-close" aria-label="閉じる">×</button>
+    <button class="lb-btn lb-prev" id="lb-prev" aria-label="前へ">‹</button>
+    <button class="lb-btn lb-next" id="lb-next" aria-label="次へ">›</button>
+    <div class="lightbox-img-wrap">
+      <img id="lb-img" src="" alt="">
+    </div>
+    <div class="lightbox-cap">
+      <div>
+        <p class="mono" id="lb-tag"></p>
+        <h3 id="lb-title"></h3>
+        <p class="desc" id="lb-desc"></p>
+      </div>
+      <p class="lightbox-index" id="lb-index"></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="contact">
+      <p class="eyebrow" style="margin-bottom:14px;">CONTACT</p>
+      <h2>感想・ご連絡はこちらから</h2>
+      <p>誤字脱字のご指摘や感想など、お気軽にどうぞ。</p>
+      <form class="contact-form" action="https://formspree.io/f/maqvpvoz" method="POST">
+        <div>
+          <label for="name">お名前</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="email">メールアドレス</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="message">メッセージ</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit">送信する</button>
+      </form>
+    </div>
+
+    <div class="footer-meta">
+      <div class="block">
+        <h4>DISCLAIMER</h4>
+        <p>当サイトは『機動戦士ガンダム』の非公式ファンサイトです。サンライズ・創通・バンダイナムコ各社とは一切関係ありません。作品の権利は各権利者に帰属します。掲載イラストはすべて管理人が模写・作成したものです。</p>
+      </div>
+      <div class="block">
+        <h4>AI学習について</h4>
+        <p>当サイトに掲載する文章・イラストの無断でのAI学習への利用を禁止します。</p>
+        <a class="hub" href="https://azaleacreativeroom888.github.io/" target="_blank" rel="noopener">Azalea Creative Room →</a>
+      </div>
+    </div>
+
+    <p class="copyright">© 2026 宇宙世紀ノート — Unofficial Mobile Suit Gundam fan site.</p>
+  </div>
+</footer>
+
+<script>
+  // ここに作品を追加していく。src は images フォルダなどに差し替えてください。
+  const artworks = [
+    { src: "images/gallery-01.jpg", title: "RX-78-2 模写", tag: "PENCIL", desc: "初めて挑戦したガンダム本体の模写。プロポーションに苦戦した一枚。" },
+    { src: "images/gallery-02.jpg", title: "アムロ・レイ", tag: "DIGITAL", desc: "表情の描き方を研究しながら描いたラフ。" },
+    { src: "images/gallery-03.jpg", title: "ザク II", tag: "PENCIL", desc: "モノアイの陰影が難しかった。" },
+    { src: "images/gallery-04.jpg", title: "ホワイトベース", tag: "DIGITAL", desc: "艦体のディテールを見ながら描いた俯瞰スケッチ。" },
+    { src: "images/gallery-05.jpg", title: "シャア専用ザク", tag: "COLOR", desc: "赤いカラーリングを楽しみながら塗った一枚。" },
+    { src: "images/gallery-06.jpg", title: "コア・ファイター", tag: "PENCIL", desc: "変形機構が好きで何度も見返しながら描いた。" }
+  ];
+
+  const grid = document.getElementById('gallery-grid');
+  const placeholderSVG = (label) =>
+    'data:image/svg+xml;utf8,' + encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+        <rect width="400" height="400" fill="#0b1420"/>
+        <rect x="0.5" y="0.5" width="399" height="399" fill="none" stroke="#173a72" stroke-width="1"/>
+        <line x1="0" y1="0" x2="400" y2="400" stroke="#173a72" stroke-width="1" opacity="0.4"/>
+        <line x1="400" y1="0" x2="0" y2="400" stroke="#173a72" stroke-width="1" opacity="0.4"/>
+        <text x="200" y="208" font-family="monospace" font-size="16" fill="#4d7fd4" text-anchor="middle">${label}</text>
+      </svg>`
+    );
+
+  artworks.forEach((art, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'thumb frame';
+    btn.setAttribute('data-index', i);
+    btn.innerHTML = `
+      <span class="cnr tl"></span><span class="cnr br"></span>
+      <img src="${art.src}" alt="${art.title}" onerror="this.onerror=null;this.src='${placeholderSVG('NO IMAGE')}';">
+      <span class="cap">
+        <p class="mono">${art.tag}</p>
+        <h3>${art.title}</h3>
+      </span>
+    `;
+    btn.addEventListener('click', () => openLightbox(i));
+    grid.appendChild(btn);
+  });
+
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbTitle = document.getElementById('lb-title');
+  const lbTag = document.getElementById('lb-tag');
+  const lbDesc = document.getElementById('lb-desc');
+  const lbIndex = document.getElementById('lb-index');
+  let current = 0;
+  let lastFocused = null;
+
+  function openLightbox(i){
+    current = i;
+    render();
+    lastFocused = document.activeElement;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lb-close').focus();
+  }
+  function render(){
+    const art = artworks[current];
+    lbImg.src = art.src;
+    lbImg.onerror = function(){ this.onerror=null; this.src = placeholderSVG('NO IMAGE'); };
+    lbImg.alt = art.title;
+    lbTitle.textContent = art.title;
+    lbTag.textContent = art.tag;
+    lbDesc.textContent = art.desc;
+    lbIndex.textContent = (current+1) + ' / ' + artworks.length;
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    if(lastFocused) lastFocused.focus();
+  }
+  function prev(){ current = (current - 1 + artworks.length) % artworks.length; render(); }
+  function next(){ current = (current + 1) % artworks.length; render(); }
+
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('lb-prev').addEventListener('click', prev);
+  document.getElementById('lb-next').addEventListener('click', next);
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowLeft') prev();
+    if(e.key === 'ArrowRight') next();
+  });
+</script>
+
+</body>
+</html>
