@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABOUT | 宇宙世紀ノート</title>
+<meta name="description" content="『機動戦士ガンダム』非公式ファンサイト『宇宙世紀ノート』の管理人紹介・リンク集。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#05080d;
+    --panel:#0b1420;
+    --panel-2:#0f1b2c;
+    --fed-blue:#173a72;
+    --fed-blue-light:#4d7fd4;
+    --armor-white:#e9edf3;
+    --armor-white-dim:#aab6c7;
+    --zeon-red:#c81f2c;
+    --zeon-red-dim:#7a1219;
+    line-height:1.7;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--void);
+    color:var(--armor-white);
+    font-family:'Noto Sans JP', sans-serif;
+    font-weight:400;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--zeon-red); color:var(--armor-white);}
+  :focus-visible{ outline:2px solid var(--zeon-red); outline-offset:3px; }
+
+  h1,h2,h3{
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-weight:900;
+    letter-spacing:.02em;
+  }
+
+  .mono{ font-family:'JetBrains Mono', monospace; }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.28em;
+    color:var(--fed-blue-light);
+    text-transform:uppercase;
+  }
+  .eyebrow.red{ color:var(--zeon-red); }
+
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none; z-index:0;
+    background-image:
+      linear-gradient(rgba(77,127,212,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(77,127,212,0.05) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
+  }
+
+  .frame{ position:relative; }
+  .cnr{ position:absolute; width:16px; height:16px; border:2px solid var(--fed-blue-light); opacity:.9; pointer-events:none; }
+  .cnr.tl{ top:-1px; left:-1px; border-width:2px 0 0 2px; }
+  .cnr.tr{ top:-1px; right:-1px; border-width:2px 2px 0 0; }
+  .cnr.bl{ bottom:-1px; left:-1px; border-width:0 0 2px 2px; }
+  .cnr.br{ bottom:-1px; right:-1px; border-width:0 2px 2px 0; }
+
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(5,8,13,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(77,127,212,0.25);
+  }
+  .nav-inner{
+    max-width:1120px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-weight:700; font-size:1.05rem;
+    letter-spacing:.05em;
+  }
+  .brand .dot{
+    width:9px; height:9px;
+    background:var(--zeon-red);
+    display:inline-block;
+    animation:blink 2.4s ease-in-out infinite;
+    flex-shrink:0;
+  }
+  @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.25;} }
+
+  nav.links{ display:flex; gap:28px; }
+  nav.links a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    color:var(--armor-white-dim);
+    padding:6px 2px;
+    border-bottom:1px solid transparent;
+    transition:color .2s, border-color .2s;
+  }
+  nav.links a:hover, nav.links a:focus-visible{ color:var(--armor-white); border-color:var(--zeon-red); }
+  nav.links a.current{ color:var(--armor-white); border-color:var(--fed-blue-light); }
+
+  .page-head{
+    max-width:1120px; margin:0 auto;
+    padding:72px 24px 40px;
+    position:relative; z-index:1;
+  }
+  .page-head h1{ font-size:clamp(2rem, 4vw, 2.6rem); margin-top:14px; }
+  .page-head p.lead{
+    margin-top:14px;
+    color:var(--armor-white-dim);
+    max-width:56ch;
+    font-size:.95rem;
+  }
+
+  .section{
+    max-width:1120px; margin:0 auto;
+    padding:0 24px 80px;
+    position:relative; z-index:1;
+  }
+  .section + .section{ padding-top:0; }
+  .section h2.section-title{
+    font-size:1.3rem;
+    margin-bottom:22px;
+  }
+
+  /* ---------- profile ---------- */
+  .profile{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:32px;
+    align-items:start;
+  }
+  .avatar{
+    aspect-ratio:1/1;
+    background:var(--panel);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .avatar svg{ width:64%; height:64%; }
+  .profile-copy p{ color:var(--armor-white-dim); font-size:.94rem; }
+  .profile-copy p + p{ margin-top:14px; }
+  .profile-copy .name{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.75rem;
+    color:var(--fed-blue-light);
+    letter-spacing:.12em;
+    margin-bottom:10px;
+  }
+
+  /* ---------- link grid ---------- */
+  .link-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+    gap:14px;
+  }
+  .link-card{
+    display:flex; align-items:center; gap:14px;
+    background:var(--panel);
+    border:1px solid rgba(77,127,212,0.2);
+    padding:16px 18px;
+    transition:border-color .2s, transform .2s;
+  }
+  .link-card:hover, .link-card:focus-visible{
+    border-color:var(--zeon-red);
+    transform:translateY(-2px);
+  }
+  .link-icon{
+    width:40px; height:40px;
+    flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.25rem;
+    background:rgba(77,127,212,0.08);
+    border:1px solid rgba(77,127,212,0.2);
+  }
+  .link-text{ flex:1; min-width:0; }
+  .link-name{ display:block; font-size:.92rem; font-weight:500; color:var(--armor-white); }
+  .link-desc{ display:block; font-size:.76rem; color:var(--armor-white-dim); margin-top:2px; }
+  .link-arrow{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--fed-blue-light);
+    flex-shrink:0;
+    transition:color .2s, transform .2s;
+  }
+  .link-card:hover .link-arrow, .link-card:focus-visible .link-arrow{ color:var(--zeon-red); transform:translateX(3px); }
+
+  .link-grid + .link-grid{ margin-top:14px; }
+  .subgroup{ margin-bottom:34px; }
+  .subgroup:last-child{ margin-bottom:0; }
+  .subgroup .sub-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.68rem;
+    letter-spacing:.16em;
+    color:var(--fed-blue-light);
+    margin-bottom:12px;
+    display:block;
+  }
+
+  /* ---------- footer (contact + meta) ---------- */
+  footer{
+    border-top:1px solid rgba(77,127,212,0.2);
+    background:var(--panel);
+  }
+  .footer-inner{
+    max-width:1120px; margin:0 auto;
+    padding:64px 24px 40px;
+  }
+  .contact h2{ font-size:1.3rem; }
+  .contact p{ color:var(--armor-white-dim); margin-top:8px; font-size:.9rem; }
+  form.contact-form{
+    margin-top:24px;
+    display:grid;
+    gap:14px;
+    max-width:480px;
+  }
+  form.contact-form label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.7rem;
+    letter-spacing:.12em;
+    color:var(--fed-blue-light);
+    display:block;
+    margin-bottom:6px;
+  }
+  form.contact-form input,
+  form.contact-form textarea{
+    width:100%;
+    background:var(--void);
+    border:1px solid rgba(77,127,212,0.3);
+    color:var(--armor-white);
+    padding:11px 12px;
+    font-family:'Noto Sans JP', sans-serif;
+    font-size:.9rem;
+  }
+  form.contact-form textarea{ min-height:110px; resize:vertical; }
+  form.contact-form button{
+    justify-self:start;
+    margin-top:6px;
+    background:var(--zeon-red);
+    color:var(--armor-white);
+    border:none;
+    padding:12px 30px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    cursor:pointer;
+    transition:background .2s;
+  }
+  form.contact-form button:hover{ background:#9e1a24; }
+
+  .footer-meta{
+    margin-top:56px;
+    padding-top:28px;
+    border-top:1px solid rgba(77,127,212,0.14);
+    display:flex; flex-wrap:wrap;
+    gap:24px 40px;
+    justify-content:space-between;
+  }
+  .footer-meta .block{ max-width:420px; }
+  .footer-meta h4{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.68rem;
+    letter-spacing:.16em;
+    color:var(--fed-blue-light);
+    margin-bottom:10px;
+  }
+  .footer-meta p{ font-size:.78rem; color:var(--armor-white-dim); }
+  .footer-meta a.hub{
+    display:inline-block; margin-top:10px;
+    font-size:.78rem;
+    color:var(--armor-white-dim);
+    border-bottom:1px solid rgba(170,182,199,0.4);
+  }
+  .footer-meta a.hub:hover{ color:var(--armor-white); border-color:var(--zeon-red); }
+
+  .copyright{
+    margin-top:40px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.68rem;
+    color:#5a6779;
+    letter-spacing:.04em;
+  }
+
+  @media (max-width:700px){
+    .profile{ grid-template-columns:1fr; }
+    .avatar{ max-width:180px; }
+  }
+  @media (max-width:520px){
+    .nav-inner{ padding:14px 18px; }
+    nav.links{ font-size:.68rem; gap:12px; }
+    .page-head{ padding:56px 18px 32px; }
+    .section{ padding:0 18px 64px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand"><span class="dot"></span>宇宙世紀ノート</div>
+    <nav class="links">
+      <a href="index.html">HOME</a>
+      <a href="blog.html">BLOG</a>
+      <a href="gallery.html">GALLERY</a>
+      <a href="about.html" class="current">ABOUT</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-head">
+  <p class="eyebrow">PILOT</p>
+  <h1>ABOUT</h1>
+  <p class="lead">管理人についてと、他のサイトへのリンクです。</p>
+</div>
+
+<section class="section">
+  <h2 class="section-title">自己紹介</h2>
+  <div class="profile">
+    <div class="avatar frame">
+      <span class="cnr tl"></span><span class="cnr tr"></span><span class="cnr bl"></span><span class="cnr br"></span>
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M50 10 L20 30 V70 L50 90 L80 70 V30 Z" stroke="#4d7fd4" stroke-width="1.2" opacity="0.5"/>
+        <path d="M50 22 L34 34 V66 L50 78 L66 66 V34 Z" stroke="#4d7fd4" stroke-width="1.2"/>
+        <circle cx="42" cy="48" r="3.5" fill="#c81f2c"/>
+      </svg>
+    </div>
+    <div class="profile-copy">
+      <p class="name">Azalea72</p>
+      <p>マンガとイラストを制作している Azalea72 です。普段はオリジナルのマンガを描いて持ち込みを目指したり、カクヨムで小説を書いたりしながら創作活動をしています。</p>
+      <p>『機動戦士ガンダム』は子供の頃に出会って以来ずっと好きな作品で、機体デザインの美しさや、戦争を戦争として描く重さに惹かれています。このサイトでは、いちファンとして視聴記録や模写を残していきます。</p>
+      <p>マンガ・小説・イラストなど他の創作活動は下のリンクからご覧いただけます。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">リンク</h2>
+
+  <div class="subgroup">
+    <span class="sub-label">MANGA / ILLUSTRATION</span>
+    <div class="link-grid">
+      <a class="link-card" href="https://rookie.shonenjump.com/users/14728546961183734555" target="_blank" rel="noopener">
+        <span class="link-icon">📚</span>
+        <span class="link-text">
+          <span class="link-name">ジャンプルーキー</span>
+          <span class="link-desc">オリジナル漫画を掲載中</span>
+        </span>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://daysneo.com/author/Sam333333Sam/" target="_blank" rel="noopener">
+        <span class="link-icon">🌙</span>
+        <span class="link-text">
+          <span class="link-name">DaysNEO</span>
+          <span class="link-desc">漫画掲載サイト</span>
+        </span>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://www.pixiv.net/users/105728284" target="_blank" rel="noopener">
+        <span class="link-icon">🎨</span>
+        <span class="link-text">
+          <span class="link-name">Pixiv</span>
+          <span class="link-desc">二次創作はこちらに掲載</span>
+        </span>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://kakuyomu.jp/users/azalea_azalea72" target="_blank" rel="noopener">
+        <span class="link-icon">✒️</span>
+        <span class="link-text">
+          <span class="link-name">カクヨム</span>
+          <span class="link-desc">小説を掲載中</span>
+        </span>
+        <span class="link-arrow">›</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="subgroup">
+    <span class="sub-label">SNS / VIDEO</span>
+    <div class="link-grid">
+      <a class="link-card" href="https://bsky.app/profile/azaleaazalea88.bsky.social" target="_blank" rel="noopener">
+        <span class="link-icon">🦋</span>
+        <span class="link-text">
+          <span class="link-name">Bluesky</span>
+          <span class="link-desc">近況・作品のお知らせ</span>
+        </span>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://www.youtube.com/@LilyPopins0512" target="_blank" rel="noopener">
+        <span class="link-icon">🎬</span>
+        <span class="link-text">
+          <span class="link-name">YouTube（リリポピ）</span>
+          <span class="link-desc">動画チャンネル</span>
+        </span>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://lilipopi.github.io/lilypopins/" target="_blank" rel="noopener">
+        <span class="link-icon">🌸</span>
+        <span class="link-text">
+          <span class="link-name">リリポピのホームページ</span>
+          <span class="link-desc">別サイト</span>
+        </span>
+        <span class="link-arrow">›</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="subgroup">
+    <span class="sub-label">AZALEA CREATIVE ROOM</span>
+    <div class="link-grid">
+      <a class="link-card" href="https://azaleacreativeroom888.github.io/" target="_blank" rel="noopener">
+        <span class="link-icon">🏠</span>
+        <span class="link-text">
+          <span class="link-name">Azalea Creative Room</span>
+          <span class="link-desc">創作活動のハブサイト</span>
+        </span>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://azaleacreativeroom888.github.io/storyreviewazalea/" target="_blank" rel="noopener">
+        <span class="link-icon">📖</span>
+        <span class="link-text">
+          <span class="link-name">書評サイト</span>
+          <span class="link-desc">本・アニメ・映画・ゲーム・小説の備忘録</span>
+        </span>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://azaleacreativeroom888.github.io/fan-english/" target="_blank" rel="noopener">
+        <span class="link-icon">🍔</span>
+        <span class="link-text">
+          <span class="link-name">英語サイト（English Site）</span>
+          <span class="link-desc">英語話者・英語学習者向け</span>
+        </span>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://azaleacreativeroom888.github.io/fan-watercolor/" target="_blank" rel="noopener">
+        <span class="link-icon">☁️</span>
+        <span class="link-text">
+          <span class="link-name">水彩画サイト</span>
+          <span class="link-desc">水彩画掲載</span>
+        </span>
+        <span class="link-arrow">›</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="contact">
+      <p class="eyebrow" style="margin-bottom:14px;">CONTACT</p>
+      <h2>感想・ご連絡はこちらから</h2>
+      <p>誤字脱字のご指摘や感想など、お気軽にどうぞ。</p>
+      <form class="contact-form" action="https://formspree.io/f/maqvpvoz" method="POST">
+        <div>
+          <label for="name">お名前</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="email">メールアドレス</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="message">メッセージ</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit">送信する</button>
+      </form>
+    </div>
+
+    <div class="footer-meta">
+      <div class="block">
+        <h4>DISCLAIMER</h4>
+        <p>当サイトは『機動戦士ガンダム』の非公式ファンサイトです。サンライズ・創通・バンダイナムコ各社とは一切関係ありません。作品の権利は各権利者に帰属します。</p>
+      </div>
+      <div class="block">
+        <h4>AI学習について</h4>
+        <p>当サイトに掲載する文章・イラストの無断でのAI学習への利用を禁止します。</p>
+        <a class="hub" href="https://azaleacreativeroom888.github.io/" target="_blank" rel="noopener">Azalea Creative Room →</a>
+      </div>
+    </div>
+
+    <p class="copyright">© 2026 宇宙世紀ノート — Unofficial Mobile Suit Gundam fan site.</p>
+  </div>
+</footer>
+
+</body>
+</html>
