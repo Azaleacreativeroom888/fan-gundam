@@ -10,9 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --void:#05080d;
-    --panel:#0b1420;
-    --panel-2:#0f1b2c;
+    --void:#0a1a30;
+    --panel:#102544;
+    --panel-2:#153058;
     --fed-blue:#173a72;
     --fed-blue-light:#4d7fd4;
     --armor-white:#e9edf3;
@@ -63,6 +63,49 @@
       linear-gradient(90deg, rgba(77,127,212,0.05) 1px, transparent 1px);
     background-size: 42px 42px;
     mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
+  }
+
+  .star-field{
+    position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+  }
+  .star-field::before{
+    content:"";
+    position:absolute; inset:-2px;
+    background-image:
+      radial-gradient(1.4px 1.4px at 8% 15%, #ffffff 60%, transparent),
+      radial-gradient(1px 1px at 22% 62%, #cfe0ff 60%, transparent),
+      radial-gradient(1.8px 1.8px at 38% 8%, #ffffff 60%, transparent),
+      radial-gradient(1px 1px at 52% 78%, #aac4f5 60%, transparent),
+      radial-gradient(1.3px 1.3px at 66% 32%, #ffffff 60%, transparent),
+      radial-gradient(1px 1px at 78% 58%, #cfe0ff 60%, transparent),
+      radial-gradient(1.6px 1.6px at 90% 18%, #ffffff 60%, transparent),
+      radial-gradient(1.1px 1.1px at 14% 88%, #ffffff 60%, transparent),
+      radial-gradient(1px 1px at 30% 42%, #aac4f5 60%, transparent),
+      radial-gradient(1.5px 1.5px at 46% 95%, #ffffff 60%, transparent),
+      radial-gradient(1px 1px at 60% 12%, #cfe0ff 60%, transparent),
+      radial-gradient(1.4px 1.4px at 72% 85%, #ffffff 60%, transparent),
+      radial-gradient(1px 1px at 84% 48%, #aac4f5 60%, transparent),
+      radial-gradient(1.2px 1.2px at 96% 70%, #ffffff 60%, transparent),
+      radial-gradient(1px 1px at 5% 50%, #ffffff 60%, transparent);
+    background-repeat: repeat;
+    background-size: 360px 360px;
+    opacity:.65;
+  }
+  .sparkle{
+    position:absolute;
+    width:3px; height:3px;
+    background:#ffffff;
+    border-radius:50%;
+    box-shadow:0 0 6px 1px rgba(233,237,243,0.9), 0 0 12px 2px rgba(77,127,212,0.5);
+    animation: sparkle-twinkle 3.2s ease-in-out infinite;
+  }
+  .sparkle.red{
+    background:var(--zeon-red);
+    box-shadow:0 0 6px 1px rgba(200,31,44,0.9), 0 0 12px 2px rgba(200,31,44,0.4);
+  }
+  @keyframes sparkle-twinkle{
+    0%, 100%{ opacity:.15; transform:scale(.7); }
+    50%{ opacity:1; transform:scale(1.3); }
   }
 
   .frame{ position:relative; }
@@ -256,6 +299,21 @@
 </style>
 </head>
 <body>
+<div class="star-field" aria-hidden="true">
+  <span class="sparkle" style="top:8%; left:12%; animation-delay:0s;"></span>
+  <span class="sparkle" style="top:18%; left:78%; animation-delay:.6s;"></span>
+  <span class="sparkle" style="top:32%; left:45%; animation-delay:1.2s;"></span>
+  <span class="sparkle red" style="top:12%; left:60%; animation-delay:1.8s;"></span>
+  <span class="sparkle" style="top:55%; left:20%; animation-delay:.3s;"></span>
+  <span class="sparkle" style="top:68%; left:85%; animation-delay:2.1s;"></span>
+  <span class="sparkle" style="top:75%; left:35%; animation-delay:1.5s;"></span>
+  <span class="sparkle red" style="top:40%; left:92%; animation-delay:.9s;"></span>
+  <span class="sparkle" style="top:88%; left:55%; animation-delay:2.4s;"></span>
+  <span class="sparkle" style="top:5%; left:35%; animation-delay:1.0s;"></span>
+  <span class="sparkle" style="top:60%; left:8%; animation-delay:2.7s;"></span>
+  <span class="sparkle" style="top:25%; left:5%; animation-delay:.4s;"></span>
+</div>
+
 
 <header class="nav">
   <div class="nav-inner">
@@ -296,27 +354,6 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="contact">
-      <p class="eyebrow" style="margin-bottom:14px;">CONTACT</p>
-      <h2>感想・ご連絡はこちらから</h2>
-      <p>誤字脱字のご指摘や感想など、お気軽にどうぞ。</p>
-      <form class="contact-form" action="https://formspree.io/f/maqvpvoz" method="POST">
-        <div>
-          <label for="name">お名前</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div>
-          <label for="email">メールアドレス</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div>
-          <label for="message">メッセージ</label>
-          <textarea id="message" name="message" required></textarea>
-        </div>
-        <button type="submit">送信する</button>
-      </form>
-    </div>
-
     <div class="footer-meta">
       <div class="block">
         <h4>DISCLAIMER</h4>
